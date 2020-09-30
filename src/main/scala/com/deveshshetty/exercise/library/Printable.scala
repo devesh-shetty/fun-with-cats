@@ -10,6 +10,9 @@ object PrintableInstances {
 
   implicit val intPrintable: Printable[Int] =
     (value: Int) => value.toString
+
+  implicit val catPrintable: Printable[Cat] =
+    (cat: Cat) => s"Name is ${Printable.format(cat.name)} ${Printable.format(cat.age)} year-old ${Printable.format(cat.color)} cat."
 }
 
 object Printable {
