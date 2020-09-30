@@ -15,7 +15,18 @@ object PrintableInstances {
     (cat: Cat) => s"Name is ${Printable.format(cat.name)} ${Printable.format(cat.age)} year-old ${Printable.format(cat.color)} cat."
 }
 
+object PrintableSyntax {
+
+  implicit class PrintableOps[A](value: A) {
+    def format(implicit p: Printable[A]): String = p.format(value)
+
+    def print(implicit p: Printable[A]): Unit = println(format)
+  }
+
+}
+
 object Printable {
   def format[A](value: A)(implicit printable: Printable[A]): String = printable.format(value)
+
   def print[A](value: A)(implicit printable: Printable[A]): Unit = println(format(value))
 }

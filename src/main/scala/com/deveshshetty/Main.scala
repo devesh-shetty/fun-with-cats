@@ -9,4 +9,8 @@ object Main extends App {
   println("Hello " |+| "Cats!")
   val cat = Cat(name = "Kityy", age = 12, color = "RED")
   println(catPrintable.format(cat))
+
+  import com.deveshshetty.exercise.library.PrintableSyntax._
+
+  Cat(name = "Ditto", age = 22, color = "GREEN").print
 }
